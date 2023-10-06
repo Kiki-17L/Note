@@ -66,7 +66,7 @@ new Vue({
 
 第三部，创建显示路由：
 
-src/App.vue
+src/App.vue：
 
 ```vue
 <template>
@@ -80,9 +80,47 @@ src/App.vue
 </template>
 ```
 
+# 路由重定向
+
+通过redirect属性重定向`'/'`路径到首页`/path/to/main`
+
+@/router/index.js：
+
+```js
+const router={
+    
+    routes:[
+        {path:'/', redirect:'/paht/to/main'},
+        {},
+        {}
+    ]
+}
+```
+
+
+
 
 
 # 嵌套路由
+
+通过children属性声明子路由
+
+@/router/index.js：
+
+```js
+const router={
+    
+    routes:[
+        {path:'/', redirect:'/paht/to/main'},
+        {path:'/father', component: Father, 
+         	children: [
+          		{path:'children', component: Children},
+          		{},
+            ]
+        }
+    ]
+}
+```
 
 
 
@@ -90,19 +128,116 @@ src/App.vue
 
 # 动态路由
 
+通过`:`-`冒号`声明路径参数，实现动态路由。
+
+例如`/path/to/user/:id`。
+
+```js
+const router={
+    
+    routes:[
+        {path:'/path/to/user/:id', component: User},
+        {},
+        
+    ]
+    
+}
+```
+
+`/path/to/user/1`
+
+`/path/to/user/2`
+
+都会路由到User组件
+
+在User组件中，可通过`this.$route.param`对象获取这个路径参数。
 
 
-## 属性路由
 
+## 属性传参
 
+以属性`prop`的的方式接受路由参数。 主要解决`$router`对象产生的耦合
 
-## 声明路由
+第一步
 
+将路由映射对象的`props`属性设置为`true`
 
+```js
+const router={
+    
+    routes:[
+        {path:'/path/to/user/:id', component: User,props:true},
+        {},
+        
+    ]
+    
+}
+```
+
+第二步
+
+组件设置自定义属性。
+
+User.vue：
+
+```vue
+<template>
+	<h1>
+        your id is{{ id }}
+    </h1>
+</template>
+<script>
+	export default{
+        //设置自定义属性id
+       props: [ 'id' ]
+    }
+</script>
+```
 
 ## 方法路由
+
+| 声明式导航               | 编程式导航                  |
+| ------------------------ | --------------------------- |
+| `<router-link to='/..'>` | `this.$router.push('/...')` |
+
+Test.vue：
+
+```vue
+<template>
+	<button @click='to'>
+        跳转
+    </button>
+</template>
+
+<script>
+	export default{
+        methods:{
+            to(){
+                this.$router.push("/user/${id}")
+            }
+            
+            
+        }
+    }
+</script>
+```
 
 
 
 # 导航卫士
+
+```js
+router.beforeEach( (to, from, next)=>{
+
+	if( to.paht='/..' && !isAuthenticated){
+        next('/login')
+    }
+    else
+    {
+        next()//放行
+    }
+})
+```
+
+
 
