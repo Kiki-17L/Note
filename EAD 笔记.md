@@ -409,3 +409,66 @@ LUT是FPGA基于**SRAM**工艺，用**存储器**来构造的一个函数发生�
 3. 实现了什么功能?
 
    > 结构体的说明，描述了所设计的硬件电路内部各组成部分的功能、相互之间的逻辑关系以及整个系统的逻辑功能。
+
+
+
+## 1. VHDL结构
+
+1. 库、程序包和配置
+
+   > 几种常用的库IEEE库，STD库，WORK库，VITAL库
+   >
+   > WORK库是用户的VHDL设计的现行工作库，**自动满足VHDL标准**，不必显示预先说明。
+   >
+   > STD库包含两个程序包，STANDAERD和TEXTIO，STANDAERD**是包含在所有的VHDL编辑器里面**，不必显示说明。
+   >
+   > VITAL库是各FPGA/CPLD生产商提供的**面向ASIC的逻辑门库**
+
+2. 实体
+
+3. 结构体
+
+## 2. 端口模式
+
+1. IN
+
+2. OUT
+
+3. BUFFER
+
+   > 具有**读功能的输出端口**
+   >
+   > 与INOUT的区别是，BUFFRE端口在将数据回读重新输入时，输入位置已经不是原来准备输出的端口位置了。
+   >
+   > 而INOUT输入和输出都用同一个端口位置。
+
+4. INOUT
+
+   > 输入输出双向端口
+
+## 3. 数据类型
+
+VHDL是一门强类型语言。
+
+标准程序包（STANDARD）中预定义的数据类型
+
+1. BOOLEAN
+2. BIT
+3. BIT_VECTOR
+4. INTEGER
+
+
+
+IEEE(STD_LOGIC_1164)预定义标准逻辑位与标准逻辑矢量
+
+1. STD_LOGIC
+2. STD_LOGIC_VECTOR
+
+
+
+其他预定义标准数据类型:
+
+Synopsys公司在STD_LOGIC_SIGNED和STD_LOGIC_UNSIGNED程序包中定义了如下数据类型：
+
+1. SIGNEND
+2. UNSIGNED
