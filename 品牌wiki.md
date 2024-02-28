@@ -35,3 +35,9 @@ Steelcase Inc. is an international manufacturer of furniture, casegoods, seating
 # 绿巨能
 
 总部设于香港，**是全球领先的笔记本电脑电池制造商**，致力于为全球用户提供全套、高效、完善的笔记本电源设备解决方案。
+
+
+
+# 3M
+
+**3M Company** (originally the **Minnesota Mining and Manufacturing Company**) is an American multinational conglomerate operating in the fields of industry, worker safety, healthcare, and consumer goods.
